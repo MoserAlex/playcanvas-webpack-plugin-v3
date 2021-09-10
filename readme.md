@@ -1,5 +1,8 @@
 ### Introduction
 
+> As the old version not in maintenance, push a new package to npm under `mengxin` account: 
+> https://www.npmjs.com/package/playcanvas-webpack-plugin-v2
+
 WebPack plugin to upload built script files to PlayCanvas. 
 
 ### Installation
