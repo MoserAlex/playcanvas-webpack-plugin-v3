@@ -1,6 +1,6 @@
 {
   "name": "playcanvas-webpack-plugin-v2",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "WebPack plugin to upload built script files to PlayCanvas.",
   "main": "index.js",
   "scripts": {

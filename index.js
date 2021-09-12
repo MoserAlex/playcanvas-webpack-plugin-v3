@@ -19,7 +19,10 @@ PlayCanvasWebpackPlugin.prototype.apply = function (compiler) {
             Object.keys(compilation.assets)
                 .forEach(key => {
                     let asset = compilation.assets[key]
-                    if (!asset || !asset.children) return
+                    if (!asset || !asset._children) {
+                        throw new Error("asset or asset._children null " + asset)
+                        return
+                    }
                     let filename = options.files[key]
                     if (filename) {
                         if (!options.project) {
@@ -32,7 +35,7 @@ PlayCanvasWebpackPlugin.prototype.apply = function (compiler) {
                             throw new Error("No bearer token, aborting")
                         }
                         console.log("Uploading " + filename.path + " to PlayCanvas")
-                        let content = asset.children.map(c => c._value ? c._value : c).join('\n')
+                        let content = asset._children.map(c => c._value ? c._value : c).join('\n')
                         let req = request({
                             uri: `https://playcanvas.com/api/assets/${filename.assetId}`,
                             method: 'PUT',
