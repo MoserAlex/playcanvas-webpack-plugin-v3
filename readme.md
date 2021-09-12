@@ -7,8 +7,13 @@
 1.0.9 => webpack4
 
 1.0.13 => webpack5
+2.0.0 => webpack5
 
 WebPack plugin to upload built script files to PlayCanvas. 
+
+check some article to migrate:
+
+https://segmentfault.com/a/1190000021821557
 
 ### Installation
 
