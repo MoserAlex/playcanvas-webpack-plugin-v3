@@ -9,17 +9,20 @@ function PlayCanvasWebpackPlugin(options) {
 
 PlayCanvasWebpackPlugin.prototype.apply = function (compiler) {
     let options = this.options
-    compiler.plugin('emit', (compilation, callback) => {
+    compiler.hooks.emit.tap('emit', (compilation, callback) => {
         try {
             if (options.skipUpload) {
                 console.log("Skipping Upload")
-                callback()
+                if(callback) callback()
                 return
             }
             Object.keys(compilation.assets)
                 .forEach(key => {
                     let asset = compilation.assets[key]
-                    if (!asset || !asset.children) return
+                    if (!asset || !asset._children) {
+                        throw new Error("asset or asset._children null " + asset)
+                        return
+                    }
                     let filename = options.files[key]
                     if (filename) {
                         if (!options.project) {
@@ -32,7 +35,7 @@ PlayCanvasWebpackPlugin.prototype.apply = function (compiler) {
                             throw new Error("No bearer token, aborting")
                         }
                         console.log("Uploading " + filename.path + " to PlayCanvas")
-                        let content = asset.children.map(c => c._value ? c._value : c).join('\n')
+                        let content = asset._children.map(c => c._value ? c._value : c).join('\n')
                         let req = request({
                             uri: `https://playcanvas.com/api/assets/${filename.assetId}`,
                             method: 'PUT',
@@ -48,7 +51,7 @@ PlayCanvasWebpackPlugin.prototype.apply = function (compiler) {
                         })
                         req.then(() => {
                             console.log("Upload complete for file (update) " + filename.path)
-                            callback()
+                            if(callback) callback()
                         }, (e) => {
                             if(e.statusCode === 404){
                                 let req = request({
@@ -70,16 +73,16 @@ PlayCanvasWebpackPlugin.prototype.apply = function (compiler) {
                                 req.then((res) => {
                                     console.log("Upload complete for file (create) " + filename.path)
                                     compilation.warnings.push("PlayCanvas Webpack Plugin\nNew main.build.js has been created. Update assetId config to" + JSON.parse(res).id)
-                                    callback()
+                                    if(callback) callback()
                                 }, (e) => {
                                     console.error(e)
                                     compilation.errors.push(e)
-                                    callback()
+                                    if(callback) callback()
                                 })
                             }else{
                                 console.error(e)
                                 compilation.errors.push(e)
-                                callback()
+                                if(callback) callback()
                             }
                         })
 
@@ -88,7 +91,7 @@ PlayCanvasWebpackPlugin.prototype.apply = function (compiler) {
                 })
         } catch (e) {
             compilation.errors.push(e)
-            callback()
+            if(callback) callback()
         }
     })
 

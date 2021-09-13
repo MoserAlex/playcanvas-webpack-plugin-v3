@@ -1,13 +1,14 @@
 {
   "name": "playcanvas-webpack-plugin-v2",
-  "version": "1.0.9",
-  "description": "WebPack plugin to upload built script files to PlayCanvas.",
+  "version": "2.0.0",
+  "description": "WebPack 5 plugin to upload built script files to PlayCanvas. ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
-    "name": "Mike Talbot"
+    "name": "Mike Talbot",
+    "name": "Xin Meng"
   },
   "license": "ISC",
   "dependencies": {
@@ -18,16 +19,17 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/whydoidoit/playcanvas-webpack-plugin.git"
+    "url": "git+git@github.com:playwindgames/playcanvas-webpack-plugin.git"
   },
   "keywords": [
     "PlayCanvas",
-    "WebPack"
+    "WebPack",
+    "WebPack5"
   ],
   "bugs": {
-    "url": "https://github.com/whydoidoit/playcanvas-webpack-plugin/issues"
+    "url": "https://github.com/playwindgames/playcanvas-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/whydoidoit/playcanvas-webpack-plugin#readme",
+  "homepage": "https://github.com/playwindgames/playcanvas-webpack-plugin#readme",
   "bundleDependencies": false,
   "deprecated": false
 }
