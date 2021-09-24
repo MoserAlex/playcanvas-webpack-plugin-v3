@@ -20,7 +20,8 @@ PlayCanvasWebpackPlugin.prototype.apply = function (compiler) {
                 .forEach(key => {
                     let asset = compilation.assets[key]
                     if (!asset || !asset._children) {
-                        throw new Error("asset or asset._children null " + asset)
+                        console.log("asset or asset._children null " + asset)
+                        // throw new Error("asset or asset._children null " + asset)
                         return
                     }
                     let filename = options.files[key]
