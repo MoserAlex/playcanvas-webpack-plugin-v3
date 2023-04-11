@@ -1,25 +1,25 @@
 {
-  "name": "playcanvas-webpack-plugin-v2",
+  "name": "playcanvas-webpack-plugin-v3",
   "version": "2.0.1",
-  "description": "WebPack 5 plugin to upload built script files to PlayCanvas. ",
+  "description": "WebPack 5 plugin to upload built script files to PlayCanvas.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "publish": "npm publish"
   },
   "author": {
-    "name": "Xin Meng"
+    "name": "Moser Alexander"
   },
   "license": "ISC",
-  "dependencies": {
-    "lodash": "^4.17.4",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.1"
-  },
   "devDependencies": {},
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "got": "^12.6.0",
+    "lodash": "^4.17.21"
+  },
   "repository": {
     "type": "git",
-    "url": "git+git@github.com:playwindgames/playcanvas-webpack-plugin.git"
+    "url": "git+git@github.com:MoserAlex/playcanvas-webpack-plugin-v3.git"
   },
   "keywords": [
     "PlayCanvas",
